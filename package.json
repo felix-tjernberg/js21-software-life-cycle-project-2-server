@@ -5,7 +5,8 @@
         "nodemon": "^2.0.20"
     },
     "scripts": {
-        "start": "nodemon server"
+        "start": "node server",
+        "dev": "nodemon server"
     },
     "type": "module"
 }
