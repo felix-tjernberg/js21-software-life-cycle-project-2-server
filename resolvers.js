@@ -19,7 +19,7 @@ const dataBase = [
 ]
 
 export const resolvers = {
-    princesses: () => {
+    brincesses: () => {
         return dataBase
     },
     hello: () => {
