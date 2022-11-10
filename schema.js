@@ -4,6 +4,7 @@ const mutationSchema = `
 type Mutation {
   addBrincess(brincess: BrincessInput!): Brincess
 }
+
 input BrincessInput {
   name: String!,
   backgroundColor: BackgroundInput!,
@@ -20,8 +21,11 @@ input HairInput {style: String!, color: BackgroundInput!}
 const querySchema = `
 type Query {
   brincesses: [Brincess],
-  hello: String @deprecated(reason: "hello was the initial implementation and only for testing purposes, Use \`brincesses\` instead.")
+  brincess(id: String!): Brincess,
+
+  hello: String @deprecated(reason: "hello was the initial implementation and only for testing purposes, Use \`brincesses\` instead."),
 }
+
 type Brincess {
   id: String,
   name: String,

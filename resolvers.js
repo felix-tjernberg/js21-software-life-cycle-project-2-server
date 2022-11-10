@@ -30,6 +30,16 @@ export const resolvers = {
         return dataBase
     },
 
+    brincess: ({ id }) => {
+        const brincess = dataBase.find((brincess) => brincess.id === id)
+
+        if (!brincess) {
+            throw new Error(`Brincess with id ${id} not found`)
+        }
+
+        return brincess
+    },
+
     hello: () => {
         return 'Hello World!'
     },
