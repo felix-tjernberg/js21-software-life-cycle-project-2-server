@@ -43,6 +43,12 @@ export const resolvers = {
         return dataBase.length
     },
 
+    authorOfBrincess({ id, authorId }) {
+        const brincess = dataBase.find((brincess) => brincess.id === id)
+        if (!brincess) throw new Error(`Brincess not found`)
+        return brincess.authorId === authorId
+    },
+
     addBrincess: ({ brincess }) => {
         if (dataBase.length >= 25) dataBase.shift()
 

@@ -27,6 +27,7 @@ type Query {
   brincesses: [Brincess],
   brincess(id: String!): Brincess,
   numberOfBrincessesInDataBase: Int,
+  authorOfBrincess(id: String!, authorId: String!): Boolean,
 
   hello: String @deprecated(reason: "hello was the initial implementation and only for testing purposes, Use \`brincesses\` instead."),
 }
