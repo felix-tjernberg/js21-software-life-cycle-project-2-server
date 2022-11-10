@@ -3,6 +3,8 @@ import { buildSchema } from 'graphql'
 const mutationSchema = `
 type Mutation {
   addBrincess(brincess: BrincessInput!): Brincess
+  editBrincess(brincess: BrincessInput!): Brincess
+  clearDataBase: [Brincess]
 }
 
 input BrincessInput {
@@ -11,7 +13,8 @@ input BrincessInput {
   eyes: EyesInput!,
   mouth: MouthInput!,
   hair: HairInput!,
-  authorId: String
+  authorId: String,
+  id: String,
 }
 input BackgroundInput {string: String!, imgSrc: String}
 input EyesInput {right: BackgroundInput!, left: BackgroundInput!}
