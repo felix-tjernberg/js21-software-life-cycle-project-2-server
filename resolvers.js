@@ -40,8 +40,8 @@ export const resolvers = {
         return brincess
     },
 
-    hello: () => {
-        return 'Hello World!'
+    numberOfBrincessesInDataBase: () => {
+        return dataBase.length
     },
 
     addBrincess: ({ brincess }) => {
@@ -53,5 +53,10 @@ export const resolvers = {
         dataBase.push(brincess)
 
         return dataBase[dataBase.length - 1]
+    },
+
+    // Deprecated
+    hello: () => {
+        return 'Hello World!'
     }
 }

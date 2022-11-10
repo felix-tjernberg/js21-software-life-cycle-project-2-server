@@ -22,6 +22,7 @@ const querySchema = `
 type Query {
   brincesses: [Brincess],
   brincess(id: String!): Brincess,
+  numberOfBrincessesInDataBase: Int,
 
   hello: String @deprecated(reason: "hello was the initial implementation and only for testing purposes, Use \`brincesses\` instead."),
 }
