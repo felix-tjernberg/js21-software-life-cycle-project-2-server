@@ -11,6 +11,7 @@ input BrincessInput {
   eyes: EyesInput!,
   mouth: MouthInput!,
   hair: HairInput!,
+  authorId: String
 }
 input BackgroundInput {string: String!, imgSrc: String}
 input EyesInput {right: BackgroundInput!, left: BackgroundInput!}
