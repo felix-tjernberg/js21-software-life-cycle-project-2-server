@@ -2,8 +2,8 @@ import { buildSchema } from 'graphql'
 
 const mutationSchema = `
 type Mutation {
-  addBrincess(brincess: BrincessInput!): Brincess
-  editBrincess(brincess: BrincessInput!): Brincess
+  addBrincess(brincessInput: BrincessInput!): Brincess
+  editBrincess(brincessInput: BrincessInput!): Brincess
   clearDataBase: [Brincess]
 }
 

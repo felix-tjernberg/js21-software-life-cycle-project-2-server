@@ -1,82 +1,101 @@
 import crypto from 'crypto'
+const MAXIMUM_BRINCESSES_IN_DATA_BASE = 25
 
-const basePrincess1 = {
+const BASE_BRINCESS_1 = {
     name: 'Brincess 1',
     eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
     mouth: { up: { string: '#4F0' }, down: { string: '#500' } },
     hair: { color: { string: '#6F0' }, style: 'long' },
     backgroundColor: { string: '#7F0' },
     creationTimeStamp: Date.now(),
-    id: '06986b57-5ebb-4647-8702-62b12b7759a1',
-    authorId: '734147a3-9876-4f26-9ddd-b394ef93e732'
-    // id: crypto.randomUUID(),
+    authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
+    id: '06986b57-5ebb-4647-8702-62b12b7759a1'
 }
-const baseBrincess2 = {
-    id: crypto.randomUUID(),
+const BASE_BRINCESS_2 = {
     name: 'Brincess 2',
     eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
     mouth: { up: { string: '#1F0' }, down: { string: '#100' } },
     hair: { color: { string: '#2F0' }, style: 'short' },
     backgroundColor: { string: '#3F0' },
-    creationTimeStamp: Date.now()
+    creationTimeStamp: Date.now(),
+    authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
+    id: '6375393e-a746-4045-ba42-d32a5cc23ba3'
 }
-const dataBase = [basePrincess1, baseBrincess2]
+function populateDataBaseWithStandardBrincesses(dataBase) {
+    dataBase.set(BASE_BRINCESS_1.id, BASE_BRINCESS_1)
+    dataBase.set(BASE_BRINCESS_2.id, BASE_BRINCESS_2)
+}
+function mapValuesAsArray(map) {
+    return Array.from(map.values())
+}
+
+// Initialize dataBase
+const dataBaseMap = new Map()
+populateDataBaseWithStandardBrincesses(dataBaseMap)
+let dataBaseArray = mapValuesAsArray(dataBaseMap)
 
 setInterval(() => {
-    dataBase.length = 0
-    dataBase.push(basePrincess1, baseBrincess2)
+    dataBaseMap.clear()
+    populateDataBaseWithStandardBrincesses(dataBaseMap)
+    dataBaseArray = mapValuesAsArray(dataBaseMap)
 }, 1200000)
 
 export const resolvers = {
     brincesses: () => {
-        return dataBase
+        return dataBaseArray
     },
 
     brincess: ({ id }) => {
-        const brincess = dataBase.find((brincess) => brincess.id === id)
+        const brincess = dataBaseMap.get(id)
         if (!brincess) throw new Error(`Brincess not found`)
-
         return brincess
     },
 
     numberOfBrincessesInDataBase: () => {
-        return dataBase.length
+        return dataBaseMap.size
     },
 
     authorOfBrincess({ id, authorId }) {
-        const brincess = dataBase.find((brincess) => brincess.id === id)
+        const brincess = dataBaseMap.get(id)
         if (!brincess) throw new Error(`Brincess not found`)
         return brincess.authorId === authorId
     },
 
-    addBrincess: ({ brincess }) => {
-        if (dataBase.length >= 25) dataBase.shift()
+    addBrincess: ({ brincessInput }) => {
+        // TODO add brincessInput values validation function
 
-        brincess.id = crypto.randomUUID()
-        brincess.creationTimeStamp = Date.now()
+        // Remove fist brincess if dataBase is full
+        if (dataBaseMap.size >= MAXIMUM_BRINCESSES_IN_DATA_BASE)
+            dataBaseMap.delete(dataBaseMap.keys().next().value)
 
-        dataBase.push(brincess)
-        return dataBase[dataBase.length - 1]
+        const uuid = crypto.randomUUID()
+        brincessInput.creationTimeStamp = Date.now()
+        brincessInput.id = uuid
+        dataBaseMap.set(uuid, brincessInput)
+        dataBaseArray = mapValuesAsArray(dataBaseMap)
+
+        return dataBaseMap.get(uuid)
     },
 
-    editBrincess: ({ brincess }) => {
-        if (!brincess.authorId) throw new Error('No authorId provided')
-        if (!brincess.id) throw new Error('No id provided')
-        const brincessIndex = dataBase.findIndex(
-            (dataBaseBrincess) => dataBaseBrincess.id === brincess.id
-        )
-        if (brincessIndex === -1) throw new Error('Brincess not found')
-        if (dataBase[brincessIndex].authorId !== brincess.authorId)
+    editBrincess: ({ brincessInput }) => {
+        // TODO add brincessInput values validation function
+        if (!brincessInput.authorId) throw new Error('No authorId provided')
+        if (!brincessInput.id) throw new Error('No id provided')
+        const brincess = dataBaseMap.get(brincessInput.id)
+        if (!brincess) throw new Error('Brincess not found')
+        if (brincess.authorId !== brincessInput.authorId)
             throw new Error('You do not have permission to edit this Brincess')
 
-        dataBase[brincessIndex] = brincess
-        return brincess
+        dataBaseMap.set(brincessInput.id, brincessInput)
+        dataBaseArray = mapValuesAsArray(dataBaseMap)
+        return brincessInput
     },
 
     clearDataBase: () => {
-        dataBase.length = 0
-        dataBase.push(basePrincess1, baseBrincess2)
-        return dataBase
+        dataBaseMap.clear()
+        populateDataBaseWithStandardBrincesses(dataBaseMap)
+        dataBaseArray = mapValuesAsArray(dataBaseMap)
+        return dataBaseArray
     },
 
     // Deprecated
