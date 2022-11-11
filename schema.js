@@ -13,8 +13,8 @@ input BrincessInput {
   eyes: EyesInput!,
   mouth: MouthInput!,
   hair: HairInput!,
-  authorId: String,
-  id: String,
+  authorId: ID,
+  id: ID,
 }
 input BackgroundInput {string: String!, imgSrc: String}
 input EyesInput {right: BackgroundInput!, left: BackgroundInput!}
@@ -25,20 +25,20 @@ input HairInput {style: String!, color: BackgroundInput!}
 const querySchema = `
 type Query {
   brincesses: [Brincess],
-  brincess(id: String!): Brincess,
+  brincess(id: ID!): Brincess,
   numberOfBrincessesInDataBase: Int,
-  authorOfBrincess(id: String!, authorId: String!): Boolean,
+  authorOfBrincess(id: ID!, authorId: ID!): Boolean,
 
   hello: String @deprecated(reason: "hello was the initial implementation and only for testing purposes, Use \`brincesses\` instead."),
 }
 
 type Brincess {
-  id: String,
+  id: ID,
   name: String,
   backgroundColor: Background,
   eyes: Eyes,
   mouth: Mouth,
-  hair: Hair
+  hair: Hair,
 }
 type Background {string: String!, imgSrc: String}
 type Eyes {right: Background, left: Background}
