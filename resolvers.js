@@ -1,33 +1,11 @@
+import {
+    populateDataBaseWithStandardBrincesses,
+    mapValuesAsArray,
+    pickTwoRandomSpellsForBrincess
+} from './resolversHelperFunctions.js'
 import crypto from 'crypto'
-const MAXIMUM_BRINCESSES_IN_DATA_BASE = 25
 
-const BASE_BRINCESS_1 = {
-    name: 'Brincess 1',
-    eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
-    mouth: { up: { string: '#4F0' }, down: { string: '#500' } },
-    hair: { color: { string: '#6F0' }, style: 'long' },
-    backgroundColor: { string: '#7F0' },
-    creationTimeStamp: Date.now(),
-    authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
-    id: '06986b57-5ebb-4647-8702-62b12b7759a1'
-}
-const BASE_BRINCESS_2 = {
-    name: 'Brincess 2',
-    eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
-    mouth: { up: { string: '#1F0' }, down: { string: '#100' } },
-    hair: { color: { string: '#2F0' }, style: 'short' },
-    backgroundColor: { string: '#3F0' },
-    creationTimeStamp: Date.now(),
-    authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
-    id: '6375393e-a746-4045-ba42-d32a5cc23ba3'
-}
-function populateDataBaseWithStandardBrincesses(dataBase) {
-    dataBase.set(BASE_BRINCESS_1.id, BASE_BRINCESS_1)
-    dataBase.set(BASE_BRINCESS_2.id, BASE_BRINCESS_2)
-}
-function mapValuesAsArray(map) {
-    return Array.from(map.values())
-}
+const MAXIMUM_BRINCESSES_IN_DATA_BASE = 25
 
 // Initialize dataBase
 const dataBaseMap = new Map()
@@ -71,6 +49,8 @@ export const resolvers = {
         const uuid = crypto.randomUUID()
         brincessInput.creationTimeStamp = Date.now()
         brincessInput.id = uuid
+        brincessInput.spells = pickTwoRandomSpellsForBrincess()
+
         dataBaseMap.set(uuid, brincessInput)
         dataBaseArray = mapValuesAsArray(dataBaseMap)
 
@@ -79,6 +59,7 @@ export const resolvers = {
 
     editBrincess: ({ brincessInput }) => {
         // TODO add brincessInput values validation function
+
         if (!brincessInput.authorId) throw new Error('No authorId provided')
         if (!brincessInput.id) throw new Error('No id provided')
         const brincess = dataBaseMap.get(brincessInput.id)

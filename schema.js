@@ -39,11 +39,14 @@ type Brincess {
   eyes: Eyes,
   mouth: Mouth,
   hair: Hair,
+  spells: Spells,
 }
 type Background {string: String!, imgSrc: String}
 type Eyes {right: Background, left: Background}
 type Mouth {up: Background, down: Background}
 type Hair {style: String, color: Background}
+type Spell {name: String, description: String}
+type Spells {first: Spell, second: Spell}
 `
 
 export const schema = buildSchema(querySchema + mutationSchema)
