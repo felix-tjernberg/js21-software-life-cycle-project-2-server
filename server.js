@@ -1,9 +1,12 @@
+import { resolvers } from './resolvers.js'
+import { schema } from './schema.js'
+
 import express from 'express'
 import { graphqlHTTP } from 'express-graphql'
 import cors from 'cors'
+import * as dotenv from 'dotenv'
 
-import { resolvers } from './resolvers.js'
-import { schema } from './schema.js'
+if (process.env.NODE_ENV !== 'production') dotenv.config()
 
 const port = process.env.PORT || 4000
 const app = express()

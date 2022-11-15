@@ -74,7 +74,10 @@ export const resolvers = {
         return brincessInput
     },
 
-    clearDataBase: () => {
+    clearDataBase: ({ verySecretKey }) => {
+        if (verySecretKey !== process.env.VERY_SECRET_KEY)
+            throw new Error('You are not authorized to clear the data base')
+
         dataBaseMap.clear()
         populateDataBaseWithStandardBrincesses(dataBaseMap)
         dataBaseArray = mapValuesAsArray(dataBaseMap)

@@ -4,7 +4,7 @@ const mutationSchema = `
 type Mutation {
   addBrincess(brincessInput: BrincessInput!): Brincess
   editBrincess(brincessInput: BrincessInput!): Brincess
-  clearDataBase: [Brincess]
+  clearDataBase(verySecretKey: String!): [Brincess]
 }
 
 input BrincessInput {
