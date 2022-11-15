@@ -27,3 +27,8 @@ export function pickTwoRandomSpellsForBrincess() {
         twoElementsFromArrayThatAreNotDuplicates(BRINCESS_SPELLS)
     return { first: randomSpells[0], second: randomSpells[1] }
 }
+
+export function validateBrincessInput(brincessInput) {
+    // TODO add more validation
+    if (brincessInput.name.length >= 10) throw new Error('Name is too long')
+}

@@ -1,7 +1,8 @@
 import {
     populateDataBaseWithStandardBrincesses,
     mapValuesAsArray,
-    pickTwoRandomSpellsForBrincess
+    pickTwoRandomSpellsForBrincess,
+    validateBrincessInput
 } from './resolversHelperFunctions.js'
 import crypto from 'crypto'
 
@@ -40,7 +41,7 @@ export const resolvers = {
     },
 
     addBrincess: ({ brincessInput }) => {
-        // TODO add brincessInput values validation function
+        validateBrincessInput(brincessInput)
 
         // Remove fist brincess if dataBase is full
         if (dataBaseMap.size >= MAXIMUM_BRINCESSES_IN_DATA_BASE)
@@ -53,12 +54,11 @@ export const resolvers = {
 
         dataBaseMap.set(uuid, brincessInput)
         dataBaseArray = mapValuesAsArray(dataBaseMap)
-
         return dataBaseMap.get(uuid)
     },
 
     editBrincess: ({ brincessInput }) => {
-        // TODO add brincessInput values validation function
+        validateBrincessInput(brincessInput)
 
         if (!brincessInput.authorId) throw new Error('No authorId provided')
         if (!brincessInput.id) throw new Error('No id provided')
