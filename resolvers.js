@@ -2,7 +2,8 @@ import {
     populateDataBaseWithStandardBrincesses,
     mapValuesAsArray,
     pickTwoRandomSpellsForBrincess,
-    validateBrincessInput
+    validateBrincessInput,
+    generateBrincessHealth
 } from './resolversHelperFunctions.js'
 import crypto from 'crypto'
 
@@ -51,6 +52,7 @@ export const resolvers = {
         brincessInput.creationTimeStamp = Date.now()
         brincessInput.id = uuid
         brincessInput.spells = pickTwoRandomSpellsForBrincess()
+        brincessInput.health = generateBrincessHealth()
 
         dataBaseMap.set(uuid, brincessInput)
         dataBaseArray = mapValuesAsArray(dataBaseMap)

@@ -40,6 +40,7 @@ type Brincess {
   mouth: Mouth,
   hair: Hair,
   spells: Spells,
+  health: Int,
 }
 type Background {string: String!, imgSrc: String}
 type Eyes {right: Background, left: Background}

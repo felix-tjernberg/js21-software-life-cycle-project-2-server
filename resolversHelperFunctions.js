@@ -32,3 +32,7 @@ export function validateBrincessInput(brincessInput) {
     // TODO add more validation
     if (brincessInput.name.length >= 10) throw new Error('Name is too long')
 }
+
+export function generateBrincessHealth() {
+    return Math.floor(Math.random() * 1000) + 1
+}

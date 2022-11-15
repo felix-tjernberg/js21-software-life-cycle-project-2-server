@@ -16,7 +16,8 @@ export const BASE_BRINCESS_1 = {
             name: 'Bite',
             description: 'You set your teeth in your enemy'
         }
-    }
+    },
+    health: 1337
 }
 export const BASE_BRINCESS_2 = {
     name: 'Brincess 2',
@@ -36,7 +37,8 @@ export const BASE_BRINCESS_2 = {
             name: 'Bite',
             description: 'You set your teeth in your enemy'
         }
-    }
+    },
+    health: 1337
 }
 
 export const BRINCESS_SPELLS = [
