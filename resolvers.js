@@ -69,7 +69,7 @@ export const resolvers = {
         if (brincess.authorId !== brincessInput.authorId)
             throw new Error('You do not have permission to edit this Brincess')
 
-        dataBaseMap.set(brincessInput.id, brincessInput)
+        dataBaseMap.set(brincessInput.id, { ...brincess, ...brincessInput })
         dataBaseArray = mapValuesAsArray(dataBaseMap)
         return brincessInput
     },
