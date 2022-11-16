@@ -1,12 +1,38 @@
 export const BASE_BRINCESS_1 = {
-    name: 'Brincess 1',
-    eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
-    mouth: { up: { string: '#4F0' }, down: { string: '#500' } },
-    hair: { color: { string: '#6F0' }, style: 'long' },
-    backgroundColor: { string: '#7F0' },
+    name: 'Felix',
+    eyes: {
+        right: { string: '#F00' },
+        left: { string: '#F00' },
+        pupils: { string: '#F00' }
+    },
+    mouth: { up: { string: '#000' }, down: { string: '#000' } },
+    hair: { color: { string: '#000' }, style: 'short' },
+    backgroundColor: { string: '#000' },
+    body: { head: { string: '#000' }, torso: { string: '#000' }, type: 'fat' },
     creationTimeStamp: Date.now(),
     authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
     id: '06986b57-5ebb-4647-8702-62b12b7759a1',
+    spells: {
+        first: {
+            name: 'Flash',
+            description: 'Distract your enemy with your curves'
+        },
+        second: {
+            name: 'Flex',
+            description: 'Intimidate enemy with your 10x developer skillz'
+        }
+    },
+    health: 1337
+}
+export const BASE_BRINCESS_2 = {
+    name: 'Gustav',
+    eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
+    mouth: { up: { string: '#1F0' }, down: { string: '#100' } },
+    hair: { color: { string: '#2F0' }, style: 'short' },
+    backgroundColor: { string: '#3F0' },
+    creationTimeStamp: Date.now(),
+    authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
+    id: '6375393e-a746-4045-ba42-d32a5cc23ba3',
     spells: {
         first: {
             name: 'Flash',
@@ -19,8 +45,8 @@ export const BASE_BRINCESS_1 = {
     },
     health: 1337
 }
-export const BASE_BRINCESS_2 = {
-    name: 'Brincess 2',
+export const BASE_BRINCESS_3 = {
+    name: 'Isak',
     eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
     mouth: { up: { string: '#1F0' }, down: { string: '#100' } },
     hair: { color: { string: '#2F0' }, style: 'short' },

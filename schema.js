@@ -13,12 +13,14 @@ input BrincessInput {
   eyes: EyesInput!,
   mouth: MouthInput!,
   hair: HairInput!,
+  body: BodyInput!,
   authorId: ID,
   id: ID,
 }
 input BackgroundInput {string: String!, imgSrc: String}
-input EyesInput {right: BackgroundInput!, left: BackgroundInput!}
+input EyesInput {right: BackgroundInput!, left: BackgroundInput!, pupils: BackgroundInput!}
 input MouthInput {up: BackgroundInput!, down: BackgroundInput!}
+input BodyInput {head: BackgroundInput!, torso: BackgroundInput!, type: String!}
 input HairInput {style: String!, color: BackgroundInput!}
 `
 
@@ -39,12 +41,14 @@ type Brincess {
   eyes: Eyes,
   mouth: Mouth,
   hair: Hair,
+  body: Body,
   spells: Spells,
   health: Int,
 }
 type Background {string: String!, imgSrc: String}
-type Eyes {right: Background, left: Background}
+type Eyes {right: Background, left: Background, pupils: Background}
 type Mouth {up: Background, down: Background}
+type Body {head: Background, torso: Background, type: String}
 type Hair {style: String, color: Background}
 type Spell {name: String, description: String}
 type Spells {first: Spell, second: Spell}
