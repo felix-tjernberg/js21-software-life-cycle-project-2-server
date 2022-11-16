@@ -1,12 +1,14 @@
 import {
     BASE_BRINCESS_1,
     BASE_BRINCESS_2,
+    BASE_BRINCESS_3,
     BRINCESS_SPELLS
 } from './brincessData.js'
 
 export function populateDataBaseWithStandardBrincesses(dataBase) {
     dataBase.set(BASE_BRINCESS_1.id, BASE_BRINCESS_1)
     dataBase.set(BASE_BRINCESS_2.id, BASE_BRINCESS_2)
+    dataBase.set(BASE_BRINCESS_3.id, BASE_BRINCESS_3)
 }
 
 export function mapValuesAsArray(map) {
