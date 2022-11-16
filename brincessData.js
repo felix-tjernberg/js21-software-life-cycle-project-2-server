@@ -27,14 +27,18 @@ export const BASE_BRINCESS_1 = {
 export const BASE_BRINCESS_2 = {
     name: 'Gustav',
     eyes: {
-        right: { string: '#0F0' },
-        left: { string: '#000' },
+        right: { string: '#fefefb' },
+        left: { string: '#fefefb' },
         pupils: { string: '#000' }
     },
-    mouth: { up: { string: '#1F0' }, down: { string: '#100' } },
-    hair: { color: { string: '#2F0' }, style: 'short' },
-    body: { head: { string: '#000' }, torso: { string: '#000' }, type: 'fat' },
-    backgroundColor: { string: '#3F0' },
+    mouth: { up: { string: '#c19357' }, down: { string: '#f3cabb' } },
+    hair: { color: { string: '#f1ce0b' }, style: 'long' },
+    body: {
+        head: { string: '#f3cabb' },
+        torso: { string: '#3f7224' },
+        type: 'fat'
+    },
+    backgroundColor: { string: '#1a65ea' },
     creationTimeStamp: Date.now(),
     authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
     id: '6375393e-a746-4045-ba42-d32a5cc23ba3',
@@ -53,14 +57,18 @@ export const BASE_BRINCESS_2 = {
 export const BASE_BRINCESS_3 = {
     name: 'Isak',
     eyes: {
-        right: { string: '#0F0' },
-        left: { string: '#000' },
+        right: { string: 'white' },
+        left: { string: 'white' },
         pupils: { string: '#000' }
     },
-    mouth: { up: { string: '#1F0' }, down: { string: '#100' } },
-    hair: { color: { string: '#2F0' }, style: 'short' },
-    body: { head: { string: '#000' }, torso: { string: '#000' }, type: 'fat' },
-    backgroundColor: { string: '#3F0' },
+    mouth: { up: { string: '#e54f37' }, down: { string: '#fa3d32' } },
+    hair: { color: { string: '#2F0' }, style: 'none' },
+    body: {
+        head: { string: 'yellow' },
+        torso: { string: '#ededed' },
+        type: 'fat'
+    },
+    backgroundColor: { string: '#ea4bc0' },
     creationTimeStamp: Date.now(),
     authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
     id: '6375323e-a746-4045-ba42-d32a5cc23ba3',
